@@ -18,9 +18,11 @@ public class WeatherApp
             var apiKey = JObject.Parse(appsettingsText)["key"].ToString();          //parsing the json object to a string by the key.
 
             Console.WriteLine("Enter your 5-digit ZIP code: ");
-            var zip = int.TryParse(Console.ReadLine(), out var zipcode);
+            var userZip = Console.ReadLine();
+            var zip = int.TryParse(userZip, out var zipcode);
             
-            while (!zip || Console.ReadLine().Length != 5)                          //Error handling for invalid zip input.
+            
+            while (!zip || userZip.Length != 5)                          //Error handling for invalid zip input.
             {
                 Console.WriteLine("Error: Please enter a valid ZIP code: ");
                 zip = int.TryParse(Console.ReadLine(), out zipcode);
